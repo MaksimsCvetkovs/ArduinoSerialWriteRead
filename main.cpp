@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "SerialClass.h"	// Library described above
 #include <string>
+#include <iostream>
 
 int main() {
     printf("Welcome to the serial test app!\n\n");
@@ -15,10 +16,6 @@ int main() {
     int dataLength = 255;
     int readResult = 0;
 
-    printf("Writing...");
-    char toWrite[] = "20";
-    SP->WriteData(toWrite, sizeof(toWrite));
-
     while(SP->IsConnected())
     {
 
@@ -26,7 +23,11 @@ int main() {
 
         incomingData[readResult] = 0;
 
-        printf("%s",incomingData);
+        //printf("%s",incomingData);
+
+        if (incomingData[0] == 'O' && incomingData[1] == 'k') {
+            system("\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" https://www.rvt.lv/");
+        }
 
         Sleep(500);
     }
